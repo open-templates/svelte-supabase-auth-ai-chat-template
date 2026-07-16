@@ -1,20 +1,23 @@
-# Instructions — repo-display-name
+# Agent & developer instructions — repo-name
 
-Guide for maintainers and coding agents working on **owner-username/repo-name**.
+**React + Supabase Auth + AI chat** SPA. Pairs with [paired-repo-name](https://github.com/owner-username/paired-repo-name).
 
-## First steps
+## What ships out of the box
 
-1. Customize [README.md](README.md) for your stack.
-2. Edit [`.github/dependabot.yml`](.github/dependabot.yml) (ecosystem, directory).
-3. Never commit secrets; use `.env.example` only.
-4. Batch [CHANGELOG.md](CHANGELOG.md) updates per release (conventional commits).
+| Route | Auth | Description |
+|-------|------|-------------|
+| `/` | Bearer session | Home — `GET /me` debug + link to chat |
+| `/chat` | Bearer session | AI chat UI → `POST /chat` |
+| `/login`, `/signup`, … | Guest/auth | Supabase auth flows |
 
-## CHANGELOG workflow
+Details: [`index.md`](index.md)
 
-Use `feat:`, `fix:`, `docs:` prefixes. Group changes per release — see [Keep a Changelog](https://keepachangelog.com/).
+## Local development
 
----
+```bash
+bun install
+cp .env.example .env.local
+bun run dev
+```
 
-## Repository documents
-
-[README](README.md) | **INSTRUCTIONS** | [CHANGELOG](CHANGELOG.md) | [CONTRIBUTING](CONTRIBUTING.md) | [SECURITY](SECURITY.md) | [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md)
+Start the paired worker before testing chat.

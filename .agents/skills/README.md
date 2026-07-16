@@ -1,37 +1,44 @@
-# github-repo-template — Agent Skills Index
+# svelte-supabase-auth-ai-chat-template — Agent Skills Index
 
-OKF module guides and Cursor skill packs for this stack-agnostic repository shell.
+Skills in `.agents/skills/` teach agents how this repository works and how to extend it safely.
 
-## OKF layers
+## Project status (current template)
 
-| Layer | Path |
-|-------|------|
-| Feature contracts | [`index.md`](../../index.md) (repo root) |
-| OKF skills index | [`index.md`](index.md) |
-| Shared concepts | [`shared/`](shared/) (synced from workspace `.agents/skills/`) |
-| Local modules | [`modules/`](modules/) |
+**Svelte 5 + Supabase Auth** SPA with **AI chat UI**, paired with **cf-hono-supabase-gemini-api-template**:
 
-## Local modules (OKF)
+- **Auth:** Google OAuth + email/password (`src/lib/auth.ts`, `src/routes/`)
+- **API calls:** `GET /health` (header), `GET /me` (home), `POST /chat` (chat) via `apiFetch`
+- **Routes:** `/`, `/chat`, `/login`, `/signup`, `/recover-password`, `/reset-password`
+- **Chat:** multi-turn threads in `sessionStorage`; assistant replies rendered with GFM markdown
+
+Canonical OKF specs: [`index.md`](../../index.md) · OKF modules: [`.agents/skills/index.md`](index.md)
+
+## OKF modules (local)
 
 | Module | Use when |
 |--------|----------|
-| [init-from-template](modules/init-from-template.md) | Running `./scripts/init-from-template.sh` or extending the init manifest |
+| [api-fetch](modules/api-fetch.md) | `apiFetch` with Bearer token and 401 retry |
+| [chat-page](modules/chat-page.md) | `Chat.svelte` send flow and UI state |
+| [chat-threads](modules/chat-threads.md) | `sessionStorage` thread list and cleanup on sign-out |
+| [chat-markdown](modules/chat-markdown.md) | `marked` + `DOMPurify` for assistant bubbles |
 
-## Shared concepts (synced)
+Shared concepts (synced): [shared/auth/](shared/auth/) · [shared/supabase/](shared/supabase/)
 
-Optional cross-template references — useful when this repo later gains a stack:
+## Project layout
 
-* [auth/shared/](shared/auth/) — session, JWT, route guards
-* [supabase/shared/](shared/supabase/) — OAuth setup, worker clients
-
-## Cursor SKILL.md packs
-
-None shipped by default for this shell template. Add `.agents/skills/<pack>/SKILL.md` when you adopt a stack, then list it here.
+```
+src/
+├── lib/           # auth.ts, api.ts, chat.ts, chat-threads.ts, me.ts, health.ts
+├── routes/        # Home.svelte, Chat.svelte, auth pages
+├── components/    # ChatSidebar, ChatMarkdown, AppHeader, AppShell
+index.md           # OKF bundle root (repo root)
+specs/features/    # numbered features + log
+.agents/skills/    # OKF modules
+```
 
 ## Extension order
 
-1. Read **`INSTRUCTIONS.md`** and **`index.md`**
-2. Run init from `templates/` when personalizing
-3. Add application code for your stack
-4. Document features in `specs/features/` and link from root `index.md`
-5. Add `.agents/skills/modules/` guides for non-obvious patterns
+1. **Backend first** — add route in `cf-hono-supabase-gemini-api-template`, document in both `index.md` files
+2. **Frontend API module** — `src/lib/<feature>.ts` using `apiFetch`
+3. **Route + UI** — Svelte route in `src/routes/` and entry in `src/routes.ts`
+4. **Update** `specs/features/`, `.agents/skills/modules/`, and this file when patterns change

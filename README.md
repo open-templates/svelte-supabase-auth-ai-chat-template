@@ -1,36 +1,48 @@
-# github-repo-template
+# svelte-supabase-auth-ai-chat-template
 
-A **minimal GitHub repository template** from [@open-templates](https://github.com/open-templates). Community docs, Dependabot, CODEOWNERS, and issue/PR scaffolding — no application code until you add it.
+**Svelte 5 + Vite + Supabase Auth** SPA with an authenticated **AI chat** page from [@open-templates](https://github.com/open-templates). Pairs with [cf-hono-supabase-gemini-api-template](https://github.com/open-templates/cf-hono-supabase-gemini-api-template).
 
 ## Quick start
 
-1. Click **Use this template** on GitHub.
-2. Clone and copy personalized files from [`templates/`](templates/):
+1. **Use this template** on GitHub, then clone your repo.
+2. Personalize from `templates/`:
 
 ```bash
-git clone https://github.com/open-templates/github-repo-template.git my-new-repo
-cd my-new-repo
 ./scripts/init-from-template.sh
 ```
 
-The hosted repo keeps **@open-templates** branding in root markdown until you run init. See [docs/init-from-template.md](docs/init-from-template.md).
+3. Install and run:
 
-### GitHub automation (included)
+```bash
+bun install
+cp .env.example .env.local
+bun run dev
+```
 
-| File | Purpose |
-|------|---------|
-| [`.github/dependabot.yml`](.github/dependabot.yml) | Dependency update PRs |
-| [`.github/workflows/dependabot-signature.yml`](.github/workflows/dependabot-signature.yml) | `Co-authored-by` via `github.repository_owner` at runtime |
-| [`.github/CODEOWNERS`](.github/CODEOWNERS) | Review ownership |
+4. Start the paired API worker ([cf-hono-supabase-gemini-api-template](https://github.com/open-templates/cf-hono-supabase-gemini-api-template)) on port `8787`.
 
-Full reference: **[docs/README.md](docs/README.md)** · [INSTRUCTIONS.md](INSTRUCTIONS.md) · [index.md](index.md) · [.agents/skills/](.agents/skills/)
+See [`templates/ABOUT_TEMPLATES.md`](templates/ABOUT_TEMPLATES.md) and [`docs/INIT_TEMPLATE.md`](docs/INIT_TEMPLATE.md).
+
+## Out-of-the-box features
+
+| Feature | Description |
+|---------|-------------|
+| Google OAuth + email auth | Sign in, sign up, password recovery |
+| API health indicator | Header polls `GET /health` |
+| **Home (`/`)** | `GET /me` JWT verification + session debug |
+| **AI chat (`/chat`)** | Chat UI → `POST /chat` with Bearer JWT |
+| Session + token refresh | `apiFetch` attaches JWT and retries on `401` |
+
+See [`index.md`](index.md).
+
+## Environment
+
+| Variable | Purpose |
+|----------|---------|
+| `VITE_SUPABASE_URL` | Supabase project URL |
+| `VITE_SUPABASE_PUBLISHABLE_KEY` | Supabase anon / publishable key |
+| `VITE_API_BASE_URL` | Worker URL (default `http://localhost:8787`) |
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
-
----
-
-## Repository documents
-
-**README** | [INSTRUCTIONS](INSTRUCTIONS.md) | [CHANGELOG](CHANGELOG.md) | [CONTRIBUTING](CONTRIBUTING.md) | [SECURITY](SECURITY.md) | [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md)
+MIT

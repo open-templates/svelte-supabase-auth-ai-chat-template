@@ -1,5 +1,14 @@
 # Directory Update Log
 
+## 2026-07-16
+
+* **Implementation**: Svelte 5 SPA with `/chat`, thread storage, markdown replies, and gemini worker pairing.
+* **Update**: CI runs `bun run ci`; dependency patch alignment.
+
 ## 2026-07-15
 
-* **Creation**: OKF v0.1 specs bundle for github-repo-template.
+* **Update**: Migrated from monolithic `FEATURES.md` to OKF v0.1 numbered feature concepts.
+
+## 2026-07-08
+
+* **Initialization**: v0.1.0 with threads, sidebar, history, and markdown replies.
