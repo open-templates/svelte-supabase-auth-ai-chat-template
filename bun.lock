@@ -24,7 +24,7 @@
         "prettier": "^3.7.4",
         "prettier-plugin-svelte": "^3.4.0",
         "svelte-eslint-parser": "^1.3.1",
-        "tailwindcss": "^4.2.4",
+        "tailwindcss": "^4.3.3",
         "typescript": "^5.9.3",
         "vite": "^7.2.0",
       },
@@ -487,7 +487,7 @@
 
     "svelte-spa-router": ["svelte-spa-router@4.0.2", "", { "dependencies": { "regexparam": "2.0.2" } }, "sha512-T1WYYk+ymwCr5m5U+n91k4dRAT6cw5HgmoPaI/TpKgAmuugymFoSBlfzkcKIK83QH4H8gUMn4tdQ0B9enFBM6g=="],
 
-    "tailwindcss": ["tailwindcss@4.2.4", "", {}, "sha512-HhKppgO81FQof5m6TEnuBWCZGgfRAWbaeOaGT00KOy/Pf/j6oUihdvBpA7ltCeAvZpFhW3j0PTclkxsd4IXYDA=="],
+    "tailwindcss": ["tailwindcss@4.3.3", "", {}, "sha512-gOhV3P7ufE62QDGg1zVaTgCR+EtPv92k2nIhVcVKcLmxT1sUBsQGhnZj175j+MqRt4zLF7ic+sCYjfhxMxj7YQ=="],
 
     "tapable": ["tapable@2.3.3", "", {}, "sha512-uxc/zpqFg6x7C8vOE7lh6Lbda8eEL9zmVm/PLeTPBRhh1xCgdWaQ+J1CUieGpIfm2HdtsUpRv+HshiasBMcc6A=="],
 
